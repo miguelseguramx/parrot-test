@@ -2,15 +2,19 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --white: #fff;
-    --black: #000;
-    --gray: #47465f;
+    --white: #ffffff;
     --orange: #f04e4a;
     --purple: #6e7de0;
     --success: #6dec6d;
     --warning: #ffff71;
     --error: #e44747;
     --customTheme: #000;
+    --gray100: #f8f8f8;
+    --gray200: #d9d9d9;
+    --gray300: #a3a3af;
+    --gray: #47465f;
+    --gray700: #2D2D2D;
+    --black: #000;
   }
   * {
     margin:0;
@@ -23,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   body {
-    font-family: var(--primaryFont);
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     background: var(--white);
     color: var(--baseSecondary);
     font-size: 16px;
