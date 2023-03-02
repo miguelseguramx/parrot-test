@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 16
       - name: Cypress run
-        uses: cypress-io/github-action@v5 # use the explicit version number
+        uses: cypress-io/github-action@v5
         env:
           CYPRESS_CREDENTIAL_USER: ${{ secrets.CREDENTIAL_USER }}
           CYPRESS_CREDENTIAL_PW: ${{ secrets.CREDENTIAL_PW }}
@@ -24,6 +24,5 @@ jobs:
           install: yarn
           build: yarn build
           start: yarn start
-          project: ./cypress
           browser: chrome
           headless: true
