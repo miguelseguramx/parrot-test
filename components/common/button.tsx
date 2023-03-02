@@ -1,11 +1,12 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Button = styled.button`
   border: none;
-  padding: 0;
+  padding: 1rem 2rem;
   height: 3.5rem;
   font-size: 1.125rem;
   min-width: 8.3125rem;
+  max-width: fit-content;
   line-height: 1.5;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-weight: 500;

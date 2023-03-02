@@ -1,28 +1,32 @@
-import { DarkButton, OutlineButton } from "@/components/common/button"
-import InputField from "@/components/common/input"
-import { ChangeEvent } from "react"
+import { useEffect } from 'react'
+import styled from 'styled-components'
+import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
+import StoreHeader from '@/components/stores/store-header'
+import ProductCategories from '@/components/stores/product-categories'
 
-function Index() {
+const StoreLayout = styled.div`
+`
+
+function Store() {
+  const { push } = useRouter()
+  const { data, status } = useSession()
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      push('/login')
+    }
+  }, [status, push])
+
+  const stores = status === 'loading' ? [] : data?.user?.stores
+  const [store] = stores || []
+
   return (
-    <div>
-      <form>
-        <InputField
-          label={"Nombre"}
-          onChange={() => {}}
-          type={"text"}
-          value={""}
-          name={"text"}
-          dataCy={"logintext"}
-          required={false}
-          placeholder={"Ingresa tu nombre"}
-        />
-        <DarkButton>Hola</DarkButton>
-        <DarkButton disabled>Hola</DarkButton>
-        <OutlineButton>Hola</OutlineButton>
-        <OutlineButton disabled>Hola</OutlineButton>
-      </form>
-    </div>
+    <>
+      <StoreHeader store={store} />
+      <ProductCategories storeId={store?.uuid || ''} />
+    </>
   )
 }
 
-export default Index
+export default Store

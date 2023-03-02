@@ -1,5 +1,5 @@
-import { ChangeEventHandler } from 'react'
-import styled from 'styled-components'
+import { ChangeEventHandler, HTMLInputTypeAttribute } from "react"
+import styled from "styled-components"
 
 export const InputFieldStyled = styled.div`
   label {
@@ -10,6 +10,7 @@ export const InputFieldStyled = styled.div`
     font-family: inherit;
   }
   input {
+    width: 100%;
     display: block;
     background: var(--white);
     font-family: inherit;
@@ -36,7 +37,7 @@ export const InputFieldStyled = styled.div`
 interface Props {
   label: string,
   onChange: ChangeEventHandler,
-  type: string,
+  type: HTMLInputTypeAttribute,
   value: string,
   name: string,
   dataCy: string,
