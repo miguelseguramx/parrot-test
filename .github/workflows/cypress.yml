@@ -16,8 +16,11 @@ jobs:
         env:
           CYPRESS_CREDENTIAL_USER: ${{ secrets.CREDENTIAL_USER }}
           CYPRESS_CREDENTIAL_PW: ${{ secrets.CREDENTIAL_PW }}
+          CYPRESS_API_HOST: ${{ secrets.API_HOST }}
+          CYPRESS_JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          CYPRESS_NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
         with:
-          env: API_HOST=${{ secrets.API_HOST }},JWT_SECRET=${{ secrets.JWT_SECRET }},NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+          env: true
           install: yarn
           build: yarn build
           start: yarn start
