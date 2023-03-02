@@ -6,6 +6,7 @@ import InputField from "@common/input"
 import { DarkButton } from "@common/button"
 import Notification from "@common/notification"
 import { useRouter } from "next/router"
+import Loader from "@common/loader"
 
 const LoginStyled = styled.div`
   display: flex;
@@ -22,6 +23,11 @@ const LoginStyled = styled.div`
     flex-direction: column;
     gap: 2rem;
   }
+  .loading {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+  }
   @media (max-width: 959.95px) {
     margin: 2rem 0;
     h3 {
@@ -35,17 +41,19 @@ function Login({ csrfToken } : { csrfToken: string }) {
   const { value: emailValue, onChange: onChangeEmail } = useInputValue('')
   const { value: passValue, onChange: onChangePass } = useInputValue('')
   const [error, setError] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   const handleSubmit = async (e: FormEvent) : Promise<void> => {
     e.preventDefault()
     setError('')
+    setLoading(true)
     const res = await signIn('credentials', {
       redirect: false,
       email: emailValue,
       password: passValue,
       callbackUrl: `${window.location.origin}`,
     })
-    console.log(res)
+    setLoading(false)
     if (res?.error) {
       setError('Las credenciales son incorrectas')
     }
@@ -80,11 +88,18 @@ function Login({ csrfToken } : { csrfToken: string }) {
             value={passValue}
             required
           />
-          <DarkButton data-cy="login-btn">
-            Iniciar sesión
-          </DarkButton>
+          <div>
+            <DarkButton data-cy="login-btn">
+              Iniciar sesión
+            </DarkButton>
+          </div>
         </form>
       </div>
+      {loading ? (
+        <div className="loading">
+          <Loader />
+        </div>
+      ) : null}
       {error ? (
         <Notification message={error} error dataCy="login-error" />
       ) : null}
