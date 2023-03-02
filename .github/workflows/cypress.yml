@@ -1,0 +1,29 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Cypress run
+        uses: cypress-io/github-action@v5 # use the explicit version number
+        env:
+          CYPRESS_CREDENTIAL_USER: ${{ secrets.CREDENTIAL_USER }}
+          CYPRESS_CREDENTIAL_PW: ${{ secrets.CREDENTIAL_PW }}
+          API_HOST: ${{ secrets.API_HOST }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+        with:
+          env: true
+          install: yarn
+          build: yarn build
+          start: yarn start
+          project: ./cypress
+          browser: chrome
+          headless: true
