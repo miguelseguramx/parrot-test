@@ -88,11 +88,9 @@ function Login({ csrfToken } : { csrfToken: string }) {
             value={passValue}
             required
           />
-          <div>
-            <DarkButton data-cy="login-btn">
-              Iniciar sesión
-            </DarkButton>
-          </div>
+          <DarkButton disabled={emailValue === '' || passValue === ''} data-cy="login-btn">
+            Iniciar sesión
+          </DarkButton>
         </form>
       </div>
       {loading ? (
