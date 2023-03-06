@@ -18,14 +18,14 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <SessionProvider>
-      <StyledComponentsRegistry>
+    <StyledComponentsRegistry>
+      <SessionProvider>
         <QueryClientProvider client={queryClient}>
           <GlobalStyles />
           <Component {...pageProps} />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
-      </StyledComponentsRegistry>
-    </SessionProvider>
+      </SessionProvider>
+    </StyledComponentsRegistry>
   )
 }

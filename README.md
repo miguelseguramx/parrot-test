@@ -14,7 +14,7 @@ Then install all the dependencies with:
 yarn install
 ```
 
-Create and configure the enviroment variables inside a *.env* file using *.env.example* as a guide
+Create and configure the enviroment variables inside a *.env* file using *.env.example* as a guide, 
 
 Finally run the project using:
 
@@ -26,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Testing
 
-First create a *cypress.env.json* with an user and his password like in *cypress.env.example.json*
+First create a *cypress.env.json* with a test user and his password like in *cypress.env.example.json*
 
 Run the production project and the test on the CLI using:
 
