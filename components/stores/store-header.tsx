@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import ParrotLogo from "@common/logo"
 import { Store } from "@/types/store"
-import Wrapper from "../common/wrapper"
+import Wrapper from "@common/wrapper"
+import { OutlineButton } from "@common/button"
+import { signOut } from "next-auth/react"
 
 const StoreHeaderStyled = styled.header`
   box-shadow: 0px 0px 10px 1px var(--gray);
@@ -16,6 +18,14 @@ const StoreHeaderStyled = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .store-user-containter {
+    display: flex;
+    gap: 1rem;
+    button {
+      height: auto;
+      padding: 0;
+    }
   }
   h1 {
     font-size: 1.8rem;
@@ -35,8 +45,13 @@ function StoreHeader({ store } : { store: Store }) : JSX.Element {
     <StoreHeaderStyled>
       <Wrapper>
         <div className="store-header-container">
-          <h1>{store?.name || ''}</h1>
           <ParrotLogo />
+          <div className="store-user-containter">
+            <h1>{store?.name || ''}</h1>
+            <OutlineButton onClick={() => signOut()}>
+              Log out
+            </OutlineButton>
+          </div>
         </div>
       </Wrapper>
     </StoreHeaderStyled>
