@@ -1,1 +1,1 @@
-export const BASE_API = process.env.API_HOST || 'http://api-staging.parrot.rest'
+export const BASE_API = process.env.API_HOST || 'https://api-staging.parrot.rest'

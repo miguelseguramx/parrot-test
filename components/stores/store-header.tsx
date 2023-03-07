@@ -23,12 +23,16 @@ const StoreHeaderStyled = styled.header`
     display: flex;
     gap: 1rem;
     button {
-      height: auto;
+      height: fit-content;
       padding: 0;
     }
   }
   h1 {
     font-size: 1.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   @media (max-width: 959.95px) {
     .parrot-logo {
@@ -47,10 +51,14 @@ function StoreHeader({ store } : { store: Store }) : JSX.Element {
         <div className="store-header-container">
           <ParrotLogo />
           <div className="store-user-containter">
-            <h1>{store?.name || ''}</h1>
-            <OutlineButton onClick={() => signOut()}>
-              Log out
-            </OutlineButton>
+            {store?.name ? (
+              <>
+                <h1>{store?.name || ''}</h1>
+                <OutlineButton onClick={() => signOut()}>
+                  Log out
+                </OutlineButton>
+              </>
+            ) : null}
           </div>
         </div>
       </Wrapper>
