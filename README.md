@@ -22,7 +22,7 @@ Finally run the project using:
 yarn serve
 ```
 
-Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Testing
 
