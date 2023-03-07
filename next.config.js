@@ -4,6 +4,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  env: {
+    API_HOST: process.env.API_HOST,
+  },
   images: {
     domains: ['d1ralsognjng37.cloudfront.net']
   },
