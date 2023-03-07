@@ -26,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Testing
 
-First create a *cypress.env.json* with a test user and his password like in *cypress.env.example.json*
+First create a *cypress.env.json* with the test user and his password like in *cypress.env.example.json*
 
 Run the production project and the test on the CLI using:
 

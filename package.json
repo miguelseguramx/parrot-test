@@ -10,8 +10,8 @@
     "serve": "yarn build && yarn start",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "yarn build && yarn start & yarn cypress:run",
-    "test:dev": "yarn build && yarn start & yarn cypress:open"
+    "test": "yarn build && run-p --race start cypress:run",
+    "test:dev": "yarn build && run-p --race start cypress:open"
   },
   "dependencies": {
     "@types/node": "18.14.1",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@testing-library/cypress": "^9.0.0",
-    "cypress": "^12.7.0"
+    "cypress": "^12.7.0",
+    "npm-run-all": "^4.1.5"
   }
 }
