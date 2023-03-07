@@ -14,7 +14,7 @@ Then install all the dependencies with:
 yarn install
 ```
 
-Create and configure the enviroment variables inside a *.env* file using *.env.example* as a guide, 
+Create and configure the enviroment variables inside a *.env* file using *.env.example* as a guide
 
 Finally run the project using:
 
