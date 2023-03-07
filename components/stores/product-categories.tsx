@@ -6,13 +6,14 @@ import Wrapper from '@common/wrapper'
 import ProductList from './product-list'
 import { useEffect, useState } from 'react'
 import { ProductCategory } from '@/types/products'
+import EmptyStore from './empty-store'
 
 const ProductCategoriesStyled = styled.section`
 
 `
 
 function ProductCategories({ storeId } : { storeId: string }) : JSX.Element {
-  const { data, isLoading, isError } = useAllProducts(storeId)
+  const { data, isLoading, isError, isSuccess } = useAllProducts(storeId)
   const [productsByCategory, setProductsByCategory] = useState<ProductCategory[]>([])
 
   useEffect(() => {
@@ -33,6 +34,10 @@ function ProductCategories({ storeId } : { storeId: string }) : JSX.Element {
   if (isError) return <Error />
 
   if (isLoading) return <Loading />
+
+  if (isSuccess && productsByCategory.length === 0) {
+    return <EmptyStore />
+  }
 
   return (
     <ProductCategoriesStyled>
